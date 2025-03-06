@@ -1,0 +1,96 @@
+/* Main container for the appointment list */
+.appointment-list {
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading for the appointment list */
+.appointment-list h2 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+/* Subtitle text */
+.appointment-list p {
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+/* Appointment item styling */
+.appointment-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Appointment details section */
+.appointment-details {
+  margin-bottom: 10px;
+}
+
+.appointment-details h3 {
+  font-size: 18px;
+  color: #2980b9;
+  margin-bottom: 5px;
+}
+
+.appointment-details p {
+  font-size: 14px;
+  color: #34495e;
+  margin: 4px 0;
+}
+
+/* Button styling for actions */
+.appointment-actions button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 8px 16px; /* Reduced padding for smaller buttons */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 14px; /* Smaller font size */
+}
+
+.appointment-actions button:hover {
+  background-color: #2980b9;
+}
+
+/* Link button styling */
+.appointment-list a button {
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 8px 16px; /* Adjusted padding to match Edit Appointment button */
+  border-radius: 5px;
+  margin-top: 10px;
+  width: auto; /* Adjust width so buttons don't stretch full width */
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  font-size: 14px; /* Reduced font size */
+}
+
+.appointment-list a button:hover {
+  background-color: #27ae60;
+}
+
+/* Make sure the layout is responsive */
+@media (max-width: 768px) {
+  .appointment-list {
+    padding: 15px;
+  }
+
+  .appointment-item {
+    padding: 10px;
+  }
+
+  .appointment-actions button {
+    width: auto; /* Keep buttons appropriately sized */
+    margin-top: 10px;
+  }
+}

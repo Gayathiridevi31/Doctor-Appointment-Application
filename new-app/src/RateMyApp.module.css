@@ -1,0 +1,46 @@
+.rate-my-app {
+    padding: 20px;
+    text-align: center;
+    background-color: #f0f8ff; /* Light Blue Background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  }
+  
+  .rating {
+    font-size: 2rem;
+  }
+  
+  .filled {
+    color: gold;
+    cursor: pointer;
+  }
+  
+  .empty {
+    color: gray;
+    cursor: pointer;
+  }
+  
+  textarea {
+    width: 50%;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .actions {
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 5px 10px; /* Reduce padding */
+    margin: 5px;
+    font-size: 0.9rem; /* Decrease font size */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
