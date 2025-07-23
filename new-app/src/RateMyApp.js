@@ -1,32 +1,30 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./RateMyApp.module.css"; // CSS for styling (optional)
+import axios from "axios";
+import styles from "./RateMyApp.module.css";
 
 function RateMyApp() {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
-  const [submitted, setSubmitted] = useState(false); // New state for tracking submission
+  const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
 
-  const handleRatingChange = (newRating) => {
-    setRating(newRating);
-  };
+  const handleSubmit = async () => {
+    if (rating === 0) {
+      alert("Please select a rating before submitting.");
+      return;
+    }
 
-  const handleCommentChange = (event) => {
-    setComment(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    // Submit the rating and comment (You can log it, save to a backend, etc.)
-    console.log(`Rating: ${rating}, Comment: ${comment}`);
-
-    // Mark as submitted
-    setSubmitted(true);
-
-    // Redirect to the welcome page after 2 seconds
-    setTimeout(() => {
-      navigate("/"); // Redirect to WelcomePage
-    }, 2000);
+    try {
+      await axios.post("http://localhost:5000/api/ratings", { stars: rating, comment });
+      setSubmitted(true);
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    } catch (error) {
+      alert("Failed to submit rating. Please try again.");
+      console.error(error);
+    }
   };
 
   return (
@@ -34,20 +32,20 @@ function RateMyApp() {
       <h2>Rate My App</h2>
 
       {submitted ? (
-        // Display a thank you message after submission
         <div className={styles["thank-you-message"]}>
           <h3>Thank you for submitting your rating!</h3>
           <p>Your feedback helps us improve the app.</p>
         </div>
       ) : (
-        <div>
+        <>
           <div className={styles["rating"]}>
             <p>Rate your experience:</p>
             {[1, 2, 3, 4, 5].map((star) => (
               <span
                 key={star}
                 className={rating >= star ? styles["filled"] : styles["empty"]}
-                onClick={() => handleRatingChange(star)}
+                onClick={() => setRating(star)}
+                style={{ cursor: "pointer" }}
               >
                 ★
               </span>
@@ -56,16 +54,17 @@ function RateMyApp() {
 
           <textarea
             value={comment}
-            onChange={handleCommentChange}
+            onChange={(e) => setComment(e.target.value)}
             placeholder="Leave your comments..."
-            rows="4"
+            rows={4}
           />
 
           <div className={styles["actions"]}>
-            <button onClick={handleSubmit}>Submit Rating</button>
-            {/* Remove logout button after submission */}
+            <button onClick={handleSubmit} disabled={rating === 0}>
+              Submit Rating
+            </button>
           </div>
-        </div>
+        </>
       )}
     </div>
   );

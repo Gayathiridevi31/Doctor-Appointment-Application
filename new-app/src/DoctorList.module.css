@@ -51,16 +51,14 @@
   background-color: #fff;
   font-family: inherit;
 }
-
-/* Doctor container with horizontal layout */
+/* Default grid layout for larger screens */
 .doctor-container {
-  display: flex;
-  flex-wrap: nowrap; /* Ensure items stay in a row */
-  overflow-x: auto; /* Horizontal scrolling for smaller screens */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Ensures 4 doctors per row on large screens */
   gap: 20px;
   padding: 10px;
   width: 100%;
-  justify-content: flex-start; /* Align items to the left */
+  justify-content: center;
 }
 
 /* Doctor item */
@@ -73,8 +71,8 @@
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  min-width: 250px; /* Ensures items remain in a row */
   transition: box-shadow 0.3s ease;
+  min-width: 250px;
 }
 
 /* Hover effect */
@@ -143,26 +141,24 @@
   margin-top: 20px;
 }
 
-/* Responsive design */
+
+
+/* Medium screens (tablets, smaller desktops) */
+@media (max-width: 1024px) {
+  .doctor-container {
+    grid-template-columns: repeat(3, 1fr); /* Three doctors per row on medium screens */
+  }
+}
+
+/* Small screens (mobile devices) */
 @media (max-width: 768px) {
   .doctor-container {
-    flex-wrap: nowrap;
-    overflow-x: auto; /* Allow scrolling on smaller screens */
+    grid-template-columns: repeat(2, 1fr); /* Two doctors per row on smaller screens */
   }
+}
 
-  .doctor-item {
-    min-width: 220px;
-  }
-
-  .doctor-list h2 {
-    font-size: 2rem;
-  }
-
-  .doctor-info h3 {
-    font-size: 1.2rem;
-  }
-
-  .doctor-info p {
-    font-size: 0.9rem;
+@media (max-width: 600px) {
+  .doctor-container {
+    grid-template-columns: repeat(1, 1fr); /* One doctor per row on small screens */
   }
 }
